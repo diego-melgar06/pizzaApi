@@ -15,7 +15,12 @@ app.use(express.json())
 
 // Connection with data base
 const main = async () => {
-  await mongoose.createConnection(process.env.URI_PIZZERIA_DB)
+  await mongoose.createConnection(process.env.URI_PIZZERIA_DB, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useFindAndModify: false,
+    useCreateIndex: true
+  })
   console.log('The connection to the database was successful')
 }
 
