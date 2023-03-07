@@ -1,8 +1,12 @@
-const mongoose = require('mongoose')
+require('dotenv').config()
+require('./db/mongo')
+
 const express = require('express')
 const morgan = require('morgan')
 const cors = require('cors')
-require('dotenv').config()
+
+const handleErrors = require('./middleware/handleErrors')
+const notFound = require('./middleware/notFound')
 
 // Define constants
 const app = express()
@@ -13,22 +17,12 @@ app.use(cors())
 app.use(morgan('dev'))
 app.use(express.json())
 
-// Connection with data base
-const main = async () => {
-  await mongoose.createConnection(process.env.URI_PIZZERIA_DB, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false,
-    useCreateIndex: true
-  })
-  console.log('The connection to the database was successful')
-}
+// Dinamyc Routes
+app.use('/api', require('./routes'))
 
-main().catch(err => console.error('Error', err))
-
-app.get('/', (req, res) => {
-  res.send('Hola Mundo desde Node :)')
-})
+// Middleware for Errors
+app.use(notFound)
+app.use(handleErrors)
 
 app.listen(PORT)
 console.log(`Servidor listening in http://localhost:${PORT}`)

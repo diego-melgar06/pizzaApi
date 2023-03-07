@@ -1,0 +1,10 @@
+POST http://localhost:3000/api/meals
+Content-Type: application/json
+
+{
+  "name": "Cuatro estaciones",
+  "description": "Alcachofas (primavera), aceitunas con tomate y albahac (verano), champiñones (otoño) y jamón serrano o cocido (inverno)",
+  "category": "Pizza",
+  "price": 100,
+  "comment": "Muy Bueno" 
+}

@@ -1,0 +1,10 @@
+PUT http://localhost:3000/api/meals/640657330a72ef9265fc10bb HTTP/1.1
+Content-Type: application/json 
+
+{
+  "name": "Calzone",
+  "description": "La calzone es una pizza especial por esconder en su interior todos sus ingredientes (queso, carne, atún, vegetales, etc.), ya que está cubierta por otra masa del mismo tamaño que la base, y en forma de empanadilla.",
+  "category": "Pizza",
+  "price": 25,
+  "commet": "Muy chiquita, pero muy agradable en la conbinacion de sabores"
+}

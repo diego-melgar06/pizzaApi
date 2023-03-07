@@ -1,0 +1,1 @@
+DELETE http://localhost:3000/api/meals/64065ffe36499a54128b2359
